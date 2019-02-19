@@ -9,7 +9,7 @@
  * @category Commandline
  * @package  Visualize
  * @author   Umut Işık <umutphp@gmail.com>
- * @license  https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @license  BSD
  * @link     https://gitlab.com/umutphp/visualize-gitlabci
  */
 echo "Hello";
