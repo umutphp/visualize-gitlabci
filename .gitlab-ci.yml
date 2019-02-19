@@ -40,6 +40,12 @@ checker:5.6:
   script:
     - phpcs .
 
+checker:7.0:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.0
+  script:
+    - phpcs .
+
 checker:7.1:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.1
