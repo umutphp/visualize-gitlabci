@@ -9,7 +9,7 @@
  * @category Commandline
  * @package  Visualize
  * @author   Umut Işık <umutphp@gmail.com>
- * @license  BSD
+ * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
  * @link     https://gitlab.com/umutphp/visualize-gitlabci
  */
 echo "Hello";
