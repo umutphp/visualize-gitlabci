@@ -1,0 +1,1 @@
+A command-line tool to visualize Gitlab pipeline by using .gitlabci.yml file of your repo.
