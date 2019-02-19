@@ -6,10 +6,10 @@
  *
  * PHP version 5.6+
  *
- * @category   Commandline
- * @package    Visualize
- * @author     Umut Işık <umutphp@gmail.com>
- * @license    https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
- * @link       https://gitlab.com/umutphp/visualize-gitlabci
+ * @category Commandline
+ * @package  Visualize
+ * @author   Umut Işık <umutphp@gmail.com>
+ * @license  https://github.com/squizlabs/PHP_CodeSniffer/blob/master/licence.txt BSD Licence
+ * @link     https://gitlab.com/umutphp/visualize-gitlabci
  */
 echo "Hello";

@@ -39,28 +39,28 @@ checker:5.6:
   stage: check
   image: umutphp/php-docker-images-for-ci:5.6
   script:
-    - phpcs .
+    - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
 
 checker:7.0:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.0
   script:
-    - phpcs .
+    - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
 
 checker:7.1:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.1
   script:
-    - phpcs .
+    - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
 
 checker:7.2:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.2
   script:
-    - phpcs .
+    - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
 
 checker:7.3:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.3
   script:
-    - phpcs .
+    - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
