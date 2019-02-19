@@ -1,0 +1,16 @@
+stages:
+  - lint
+  - check
+  - test
+
+linter:7.1:
+  stage: lint
+  image: umutphp/php-docker-images-for-ci:7.1
+  script:
+    - parallel-lint --exclude vendor .
+
+checker:7.1:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.1
+  script:
+    - phpcs .
