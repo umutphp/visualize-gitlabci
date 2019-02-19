@@ -1,9 +1,5 @@
 <?php
 /**
- * 
- */
-
-/**
  * Visiualize the Gitlab Pipeline
  *
  * A commandline script to visiualize the Gitlab pipeline on commandline

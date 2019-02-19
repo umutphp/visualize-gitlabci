@@ -1,6 +1,7 @@
 stages:
   - lint
   - check
+  - compose
   - test
 
 linter:5.6:

@@ -1,0 +1,25 @@
+{
+  "name": "umutphp/visualize-gitlabci",
+  "type": "phpcodesniffer-standard",
+  "description": "Visiualize the Gitlab Pipeline",
+  "keywords": [
+    "gitlab",
+    "ci",
+    "pipeline",
+    ".gitlab-ci.yml"
+  ],
+  "license": "GPL-3.0-only",
+  "authors": [
+    {
+      "name": "Umut Işık",
+      "email": "umutphp@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*"
+  },
+  "bin": ["visualize-gitlabci"]
+}
