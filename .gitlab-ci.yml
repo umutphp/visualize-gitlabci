@@ -1,8 +1,18 @@
 stages:
   - lint
   - check
-  - composer
+  - security
   - test
+
+cache:
+  key: "$CI_COMMIT_REF_SLUG"
+  paths:
+  - vendor/
+  - composer.lock
+
+before_script:
+  # Run Composer
+  - composer install
 
 linter:5.6:
   stage: lint
@@ -65,32 +75,38 @@ checker:7.3:
   script:
     - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
 
-composer:5.6:
-  stage: composer
-  image: umutphp/php-docker-images-for-ci:5.6
-  script:
-    - composer install
-
-composer:7.0:
-  stage: composer
-  image: umutphp/php-docker-images-for-ci:7.0
-  script:
-    - composer install
-
-composer:7.1:
-  stage: composer
+composer-checker:
+  stage: security
   image: umutphp/php-docker-images-for-ci:7.1
   script:
-    - composer install
+    - security-checker security:check composer.lock
 
-composer:7.2:
-  stage: composer
+unittest:5.6:
+  stage: test
+  image: umutphp/php-docker-images-for-ci:5.6
+  script:
+    - phpunit
+
+unittest:7.0:
+  stage: test
+  image: umutphp/php-docker-images-for-ci:7.0
+  script:
+    - phpunit
+
+unittest:7.1:
+  stage: test
+  image: umutphp/php-docker-images-for-ci:7.1
+  script:
+    - phpunit
+
+unittest:7.2:
+  stage: test
   image: umutphp/php-docker-images-for-ci:7.2
   script:
-    - composer install
+    - phpunit
 
-composer:7.3:
-  stage: composer
+unittest:7.3:
+  stage: test
   image: umutphp/php-docker-images-for-ci:7.3
   script:
-    - composer install
+    - phpunit
