@@ -3,7 +3,7 @@ use PHPUnit\Framework\TestCase;
 
 class FirstTest extends TestCase
 {
-    public function firstTest() {
+    public function testFirst() {
         $this->assertTrue(true);
     }
 }
