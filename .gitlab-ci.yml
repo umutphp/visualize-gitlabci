@@ -45,12 +45,6 @@ linter:7.3:
   script:
     - parallel-lint --exclude vendor .
 
-checker:5.6:
-  stage: check
-  image: umutphp/php-docker-images-for-ci:5.6
-  script:
-    - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
-
 checker:7.0:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.0
@@ -80,12 +74,6 @@ composer-checker:
   image: umutphp/php-docker-images-for-ci:7.1
   script:
     - security-checker security:check composer.lock
-
-unittest:5.6:
-  stage: test
-  image: umutphp/php-docker-images-for-ci:5.6
-  script:
-    - phpunit
 
 unittest:7.0:
   stage: test
