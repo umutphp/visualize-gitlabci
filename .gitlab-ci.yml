@@ -73,26 +73,22 @@ unittest:7.0:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.0
   script:
-    - ls -la
-    - ls -la ./vendor
-    #- ls -la ./vendor/bin
-    - ls -la /usr/local/bin/
-    #- ./vendor/bin/phpunit
+    - ./phpunit
 
 unittest:7.1:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.1
   script:
-    - ./vendor/bin/phpunit
+    - ./phpunit
 
 unittest:7.2:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.2
   script:
-    - ./vendor/bin/phpunit
+    - ./phpunit
 
 unittest:7.3:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.3
   script:
-    - ./vendor/bin/phpunit
+    - ./phpunit
