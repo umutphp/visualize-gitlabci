@@ -73,22 +73,22 @@ unittest:7.0:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.0
   script:
-    - phpunit
+    - ./vendor/bin/phpunit
 
 unittest:7.1:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.1
   script:
-    - phpunit
+    - ./vendor/bin/phpunit
 
 unittest:7.2:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.2
   script:
-    - phpunit
+    - ./vendor/bin/phpunit
 
 unittest:7.3:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.3
   script:
-    - phpunit
+    - ./vendor/bin/phpunit
