@@ -19,6 +19,10 @@ linter:7.0:
   image: umutphp/php-docker-images-for-ci:7.0
   script:
     - parallel-lint --exclude vendor .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 
 linter:7.1:
@@ -26,69 +30,117 @@ linter:7.1:
   image: umutphp/php-docker-images-for-ci:7.1
   script:
     - parallel-lint --exclude vendor .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 linter:7.2:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.2
   script:
     - parallel-lint --exclude vendor .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 linter:7.3:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.3
   script:
     - parallel-lint --exclude vendor .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 checker:7.0:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.0
   script:
     - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 checker:7.1:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.1
   script:
     - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 checker:7.2:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.2
   script:
     - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 checker:7.3:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.3
   script:
     - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 composer-checker:
   stage: security
   image: umutphp/php-docker-images-for-ci:7.1
   script:
     - security-checker security:check composer.lock
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 unittest:7.0:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.0
   script:
     - ./phpunit
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 unittest:7.1:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.1
   script:
     - ./phpunit
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 unittest:7.2:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.2
   script:
     - ./phpunit
+  only:
+    - master
+    - develop
+    - /^feature.*$/
 
 unittest:7.3:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.3
   script:
     - phpunit
+  only:
+    - master
+    - develop
+    - /^feature.*$/

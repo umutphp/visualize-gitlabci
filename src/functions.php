@@ -55,11 +55,15 @@ function getTagsUsed($jobs, $defaultTag = "master")
     $tags = array();
 
     foreach ($jobs as $key => $job) {
-        if (!isset($job["tags"])) {
+        if (!isset($job["only"])) {
             continue;
         }
 
-        $tags = array_merge($tags, $job["tags"]);
+        if (!is_array($job["only"])) {
+            continue;
+        }
+
+        $tags = array_merge($tags, $job["only"]);
     }
 
     if (empty($tags)) {
