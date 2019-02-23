@@ -1,4 +1,16 @@
 <?php
+/**
+ * Functions file 
+ *
+ *
+ * PHP version 5.6+
+ *
+ * @category Commandline
+ * @package  Visualize
+ * @author   Umut Işık <umutphp@gmail.com>
+ * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
+ * @link     https://gitlab.com/umutphp/visualize-gitlabci
+ */
 $defaultStages = array(
     "build", "test", "deploy"
 );
@@ -10,13 +22,29 @@ $reservedKeywords = array(
 
 $CIYML = ".gitlab-ci.yml";
 
-function getListOfJobs($array, $reservedKeywords) {
-    return array_filter($array, function($v, $k) use ($reservedKeywords) {
+/**
+ * Get the list of jobs from config array
+ *
+ * @param array $array
+ * @param array $reservedKeywords Reserved keywords in the YAML file
+ * @return array
+ */
+function getListOfJobs($array, $reservedKeywords)
+{
+    return array_filter($array, function ($v, $k) use ($reservedKeywords) {
         return !in_array($k, $reservedKeywords) && is_array($v);
     }, ARRAY_FILTER_USE_BOTH);
 }
 
-function getStages($array, $defaultStages) {
+/**
+ * Get the list of stages from config array
+ *
+ * @param array $array
+ * @param array $defaultStages
+ * @return array
+ */
+function getStages($array, $defaultStages)
+{
     if (!isset($array["stages"])) {
         return $defaultStages;
     }

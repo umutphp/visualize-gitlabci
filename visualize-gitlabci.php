@@ -22,7 +22,7 @@ $files = array(
 $autoloadFileFound = false;
 foreach ($files as $file) {
     if (file_exists($file)) {
-        require $file;
+        include $file;
         $autoloadFileFound = true;
         break;
     }
