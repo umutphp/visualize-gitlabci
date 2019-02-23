@@ -19,7 +19,9 @@ $files = array(
     __DIR__ . '/../../autoload.php',
     __DIR__ . '/vendor/autoload.php'
 );
+
 $autoloadFileFound = false;
+
 foreach ($files as $file) {
     if (file_exists($file)) {
         include $file;
@@ -27,6 +29,7 @@ foreach ($files as $file) {
         break;
     }
 }
+
 if (!$autoloadFileFound) {
     $message = 'No autoload.php is found' .PHP_EOL;
 
@@ -39,3 +42,10 @@ require_once __DIR__ . '/src/functions.php';
 $config = Yaml::parseFile($CIYML);
 $jobs   = getListOfJobs($config, $reservedKeywords);
 $stages = getStages($config, $defaultStages);
+$tags   = getTagsUsed($config, $defaultTag);
+
+$columnWidth    = 32;
+$pipelineLength = (count($stages) * $columnWidth) + count($stages) + 1;
+
+displayTagHeader($columnWidth, $pipelineLength, "master");
+displayPipelineHeader($columnWidth, $pipelineLength, $stages);
