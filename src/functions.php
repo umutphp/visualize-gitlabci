@@ -24,7 +24,7 @@ $CIYML = ".gitlab-ci.yml";
 /**
  * Get the list of jobs from config array
  *
- * @param array $array Config array
+ * @param array $array            Config array
  * @param array $reservedKeywords Reserved keywords in the YAML file
  *
  * @return array
@@ -43,7 +43,7 @@ function getListOfJobs($array, $reservedKeywords)
 /**
  * Get the list of stages from config array
  *
- * @param array $array Config array
+ * @param array $array         Config array
  * @param array $defaultStages Array of stages
  *
  * @return array

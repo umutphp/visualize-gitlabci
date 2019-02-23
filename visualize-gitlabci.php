@@ -28,10 +28,8 @@ foreach ($files as $file) {
     }
 }
 if (!$autoloadFileFound) {
-    $message = 'You need to set up the project dependencies using composer commands:' . PHP_EOL;
-    fwrite(STDERR,
-        $message
-    );
+    $message = 'No autoload.php is found' .PHP_EOL;
+
     echo $message . PHP_EOL;
     die(FAILED);
 }
