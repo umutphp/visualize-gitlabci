@@ -4,12 +4,6 @@ stages:
   - security
   - test
 
-cache:
-  key: "$CI_COMMIT_REF_SLUG"
-  paths:
-  - vendor/
-  - composer.lock
-
 before_script:
   # Run Composer
   - composer install
