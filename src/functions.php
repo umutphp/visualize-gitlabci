@@ -43,14 +43,43 @@ function getListOfJobs($array, $reservedKeywords)
 }
 
 /**
- * Get the list of tags from config array
+ * Get the display data from jobs
+ *
+ * @param array $jobs Array of jobs parsed from YAML file
+ *
+ * @return array
+ */
+function getDisplayData($jobs)
+{
+    $return = array();
+
+    foreach ($jobs as $jobName => $job) {
+        foreach ($job["only"] as $branch) {
+            if (!isset($return[$branch])) {
+                $return[$branch] = array();
+            }
+
+            if (!isset($return[$branch][$job["stage"]])) {
+                $return[$branch][$job["stage"]] = array();
+            }
+
+            $job["name"] = $jobName;
+            $return[$branch][$job["stage"]][] = $job;
+        }
+    }
+
+    return $return;
+}
+
+/**
+ * Get the list of branches from config array
  *
  * @param array  $jobs       Config array
  * @param string $defaultTag Default tag name
  *
  * @return array
  */
-function getTagsUsed($jobs, $defaultTag = "master")
+function getBranchesUsed($jobs, $defaultTag = "master")
 {
     $tags = array();
 
@@ -116,6 +145,28 @@ function displayPipelineHeader($columnWidth, $pipelineLength, $stages)
     }
     echo PHP_EOL;
     displayTableRuler($pipelineLength);
+}
+
+/**
+ * Display the line containing steps
+ * 
+ * @param integer $columnWidth    Column width in charactter count
+ * @param integer $pipelineLength Pipeline lenght in character count
+ * @param array   $steps          Array of the steps
+ *
+ * @return void 
+ */
+function displayPipelineLine($columnWidth, $pipelineLength, $steps)
+{
+    //displayTableRuler($pipelineLength);
+    echo "|";
+
+    foreach ($steps as $step) {
+        $spaceCount = $columnWidth - strlen($step["name"]) - 1;
+        echo " " . $step["name"] . str_repeat(" ", $spaceCount) . "|";
+    }
+
+    echo PHP_EOL;
 }
 
 /**

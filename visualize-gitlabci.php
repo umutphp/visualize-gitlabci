@@ -39,13 +39,43 @@ if (!$autoloadFileFound) {
 
 require_once __DIR__ . '/src/functions.php';
 
-$config = Yaml::parseFile($CIYML);
-$jobs   = getListOfJobs($config, $reservedKeywords);
-$stages = getStages($config, $defaultStages);
-$tags   = getTagsUsed($config, $defaultTag);
+$config   = Yaml::parseFile($CIYML);
+$jobs     = getListOfJobs($config, $reservedKeywords);
+$stages   = getStages($config, $defaultStages);
+$branches = getBranchesUsed($config, $defaultTag);
+$data     = getDisplayData($jobs);
 
 $columnWidth    = 32;
 $pipelineLength = (count($stages) * $columnWidth) + count($stages) + 1;
 
-displayTagHeader($columnWidth, $pipelineLength, "master");
-displayPipelineHeader($columnWidth, $pipelineLength, $stages);
+//var_dump($data);
+
+foreach ($data as $branch => $stages) {
+    displayTagHeader($columnWidth, $pipelineLength, $branch);
+    displayPipelineHeader($columnWidth, $pipelineLength, array_keys($stages));
+
+    $maxStepCount = 0;
+    
+    foreach ($stages as $stage => $steps) {
+        if (count($steps) > $maxStepCount) {
+            $maxStepCount = count($steps);
+        }
+    }
+
+    for ($i=0; $i < $maxStepCount; $i++) {
+        $listOfSteps = array();
+
+        foreach ($stages as $stage => $steps) {
+            if (isset($steps[$i])) {
+                $listOfSteps[] = $steps[$i];
+                continue;
+            }
+
+            $listOfSteps[] = array("name" => "");
+        }
+
+        displayPipelineLine($columnWidth, $pipelineLength, $listOfSteps);
+    }
+    displayTableRuler($pipelineLength);
+    echo PHP_EOL;
+}
