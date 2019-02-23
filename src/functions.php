@@ -2,7 +2,6 @@
 /**
  * Functions file 
  *
- *
  * PHP version 5.6+
  *
  * @category Commandline
@@ -25,22 +24,28 @@ $CIYML = ".gitlab-ci.yml";
 /**
  * Get the list of jobs from config array
  *
- * @param array $array
+ * @param array $array Config array
  * @param array $reservedKeywords Reserved keywords in the YAML file
+ *
  * @return array
  */
 function getListOfJobs($array, $reservedKeywords)
 {
-    return array_filter($array, function ($v, $k) use ($reservedKeywords) {
-        return !in_array($k, $reservedKeywords) && is_array($v);
-    }, ARRAY_FILTER_USE_BOTH);
+    return array_filter(
+        $array,
+        function ($v, $k) use ($reservedKeywords) {
+            return !in_array($k, $reservedKeywords) && is_array($v);
+        },
+        ARRAY_FILTER_USE_BOTH
+    );
 }
 
 /**
  * Get the list of stages from config array
  *
- * @param array $array
- * @param array $defaultStages
+ * @param array $array Config array
+ * @param array $defaultStages Array of stages
+ *
  * @return array
  */
 function getStages($array, $defaultStages)
