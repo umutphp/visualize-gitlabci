@@ -45,12 +45,13 @@ function getListOfJobs($array, $reservedKeywords)
 /**
  * Get the list of tags from config array
  *
- * @param array  $array      Config array
+ * @param array  $jobs       Config array
  * @param string $defaultTag Default tag name
  *
  * @return array
  */
-function getTagsUsed($jobs, $defaultTag = "master") {
+function getTagsUsed($jobs, $defaultTag = "master")
+{
     $tags = array();
 
     foreach ($jobs as $key => $job) {
@@ -94,18 +95,20 @@ function getStages($array, $defaultStages)
  * 
  * @param integer $columnWidth    Column width in charactter count
  * @param integer $pipelineLength Pipeline lenght in character count
- * @param array   $stage          Array of the stages
+ * @param array   $stages         Array of the stages
  *
  * @return void 
  */
-function displayPipelineHeader($columnWidth, $pipelineLength, $stages) {
+function displayPipelineHeader($columnWidth, $pipelineLength, $stages)
+{
     displayTableRuler($pipelineLength);
     echo "|";
 
     foreach ($stages as $key => $stage) {
         $preSpaceCount  = floor(($columnWidth - strlen($stage)) / 2);
         $postSpaceCount = ceil(($columnWidth - strlen($stage)) / 2);
-        echo str_repeat(" ", $preSpaceCount) . "$stage" . str_repeat(" ", $postSpaceCount) . "|";
+        echo str_repeat(" ", $preSpaceCount) . "$stage" .
+        str_repeat(" ", $postSpaceCount) . "|";
     }
     echo PHP_EOL;
     displayTableRuler($pipelineLength);
@@ -120,7 +123,8 @@ function displayPipelineHeader($columnWidth, $pipelineLength, $stages) {
  *
  * @return void 
  */
-function displayTagHeader($columnWidth, $pipelineLength, $tag) {
+function displayTagHeader($columnWidth, $pipelineLength, $tag)
+{
     displayTableRuler($pipelineLength);
     echo "|";
     $spaceCount = $pipelineLength - strlen($tag) - 3;
@@ -135,6 +139,7 @@ function displayTagHeader($columnWidth, $pipelineLength, $tag) {
  *
  * @return void 
  */
-function displayTableRuler($pipelineLength) {
+function displayTableRuler($pipelineLength)
+{
     echo str_repeat("-", $pipelineLength) . PHP_EOL;
 }
