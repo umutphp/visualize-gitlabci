@@ -1,6 +1,6 @@
 {
   "name": "umutphp/visualize-gitlabci",
-  "type": "phpcodesniffer-standard",
+  "type": "ci-helper-script",
   "description": "Visiualize the Gitlab Pipeline",
   "keywords": [
     "gitlab",
