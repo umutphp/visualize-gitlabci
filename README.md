@@ -7,5 +7,5 @@ Please check the screenshots of the command executed in this repository and the 
 The screenshot below is taken by executing the command in this repository. 
 ![The result of visualize-gitlabci](/examples/screenshot-1.png?raw=true "The result of visualize-gitlabci")
 
-The screenshot below is taken from the pipeline created by Gitlab (from [Gitlab.Com](https://gitlab.com/umutphp/visualize-gitlabci/pipelines)).
+The screenshot below is taken from the pipeline created by Gitlab for `master` branch (from [Gitlab.Com](https://gitlab.com/umutphp/visualize-gitlabci/pipelines)).
 ![The pipeline](/examples/screenshot-2.png?raw=true "The pipeline of visualize-gitlabci")
