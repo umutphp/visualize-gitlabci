@@ -12,7 +12,7 @@ linter:7.0:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.0
   script:
-    - /tools/jakub-onderka/php-parallel-lint/vendor/bin/parallel-lint --exclude vendor .
+    - /tools/jakub-onderka/php-parallel-lint/parallel-lint --exclude vendor .
   only:
     - master
     - develop
@@ -23,7 +23,7 @@ linter:7.1:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.1
   script:
-    - /tools/jakub-onderka/php-parallel-lint/vendor/bin/parallel-lint --exclude vendor .
+    - /tools/jakub-onderka/php-parallel-lint/parallel-lint --exclude vendor .
   only:
     - master
     - develop
@@ -33,7 +33,7 @@ linter:7.2:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.2
   script:
-    - /tools/jakub-onderka/php-parallel-lint/vendor/bin/parallel-lint --exclude vendor .
+    - /tools/jakub-onderka/php-parallel-lint/parallel-lint --exclude vendor .
   only:
     - master
     - develop
@@ -43,7 +43,7 @@ linter:7.3:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.3
   script:
-    - /tools/jakub-onderka/php-parallel-lint/vendor/bin/parallel-lint --exclude vendor .
+    - /tools/jakub-onderka/php-parallel-lint/parallel-lint --exclude vendor .
   only:
     - master
     - develop
