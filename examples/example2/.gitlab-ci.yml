@@ -1,0 +1,41 @@
+# take from http://docs.galacticfog.com/guides/gitlab-integration/containers/example-gitlab-ci-yaml/
+image: docker:git
+
+services:
+    - docker:dind
+
+stages:
+    - build
+    - review
+
+build-and-publish:
+    stage: build
+    script:
+        - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
+        - docker build --build-arg GIT_HASH=$CI_BUILD_REF -t $CI_REGISTRY_IMAGE:$CI_BUILD_REF -t $CI_REGISTRY_IMAGE:latest -f Dockerfile .
+        - docker push $CI_REGISTRY_IMAGE
+
+review:
+  stage: review
+  environment:
+     name: review-$CI_COMMIT_REF_SLUG
+     on_stop: stop_review
+  script:
+     - apk add --update --no-cache curl && rm -rf /var/cache/apk/*
+     - curl -u "$GF_API_KEY":"$GF_API_SECRET" "${GF_DEPLOY_URL}?sha=${CI_COMMIT_SHA}&ref=${CI_COMMIT_REF_SLUG}&org=${GF_TARGET_ORG_NAME}&env=${GF_TARGET_ENV_UUID}&api=${GF_TARGET_API_UUID}&dockerImg=${CI_REGISTRY_IMAGE}&name=${GITLAB_PROJECT_NAME}&projId=${GITLAB_PROJECT_ID}&port=${APP_SERVICE_PORT}"
+  except:
+    - /^[Ww][Ii][Pp]-.*$/
+
+stop_review:
+  stage: review
+  script:
+     - apk add --update --no-cache curl && rm -rf /var/cache/apk/*
+     - curl -u "$GF_API_KEY":"$GF_API_SECRET" "${GF_DEPLOY_URL}?entryPoint=stop&ref=${CI_COMMIT_REF_SLUG}&org=${GF_TARGET_ORG_NAME}&env=${GF_TARGET_ENV_UUID}&name=${GITLAB_PROJECT_NAME}&projId=${GITLAB_PROJECT_ID}"
+  variables:
+    GIT_STRATEGY: none
+  environment:
+    name: review-$CI_COMMIT_REF_SLUG
+    action: stop
+  when: manual
+  except:
+    - master

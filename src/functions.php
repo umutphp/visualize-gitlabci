@@ -54,6 +54,9 @@ function getDisplayData($jobs)
     $return = array();
 
     foreach ($jobs as $jobName => $job) {
+        if (!isset($job["only"])) {
+            $job["only"] = array("*");
+        }
         foreach ($job["only"] as $branch) {
             if (!isset($return[$branch])) {
                 $return[$branch] = array();
