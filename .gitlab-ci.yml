@@ -33,7 +33,7 @@ linter:7.2:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.2
   script:
-    -parallel-lint --exclude vendor .
+    - parallel-lint --exclude vendor .
   only:
     - master
     - develop
