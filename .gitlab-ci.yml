@@ -179,36 +179,6 @@ phpmnd:7.0:
     - develop
     - /^feature.*$/
 
-phpdcd:7.1:
-  stage: check
-  image: umutphp/php-docker-images-for-ci:7.1
-  script:
-    - phpdcd .
-  only:
-    - master
-    - develop
-    - /^feature.*$/
-
-phpdcd:7.2:
-  stage: check
-  image: umutphp/php-docker-images-for-ci:7.2
-  script:
-    - phpdcd .
-  only:
-    - master
-    - develop
-    - /^feature.*$/
-
-phpdcd:7.3:
-  stage: check
-  image: umutphp/php-docker-images-for-ci:7.3
-  script:
-    - phpdcd .
-  only:
-    - master
-    - develop
-    - /^feature.*$/
-
 composer-checker:
   stage: security
   image: umutphp/php-docker-images-for-ci:7.1
