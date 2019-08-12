@@ -129,6 +129,46 @@ var-dump-check:7.3:
     - develop
     - /^feature.*$/
 
+phpmnd:7.0:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.0
+  script:
+    - phpmnd .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+phpmnd:7.1:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.1
+  script:
+    - var-dump-check .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+phpmnd:7.2:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.2
+  script:
+    - var-dump-check .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+phpmnd:7.3:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.3
+  script:
+    - var-dump-check .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
 composer-checker:
   stage: security
   image: umutphp/php-docker-images-for-ci:7.1
