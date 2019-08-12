@@ -49,7 +49,7 @@ linter:7.3:
     - develop
     - /^feature.*$/
 
-checker:7.0:
+phpcs:7.0:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.0
   script:
@@ -59,7 +59,7 @@ checker:7.0:
     - develop
     - /^feature.*$/
 
-checker:7.1:
+phpcs:7.1:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.1
   script:
@@ -69,7 +69,7 @@ checker:7.1:
     - develop
     - /^feature.*$/
 
-checker:7.2:
+phpcs:7.2:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.2
   script:
@@ -79,11 +79,51 @@ checker:7.2:
     - develop
     - /^feature.*$/
 
-checker:7.3:
+phpcs:7.3:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.3
   script:
     - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+var-dump-check:7.0:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.0
+  script:
+    - var-dump-check .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+var-dump-check:7.1:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.1
+  script:
+    - var-dump-check .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+var-dump-check:7.2:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.2
+  script:
+    - var-dump-check .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+var-dump-check:7.3:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.3
+  script:
+    - var-dump-check .
   only:
     - master
     - develop
