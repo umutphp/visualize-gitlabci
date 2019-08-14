@@ -8,6 +8,27 @@ before_script:
   # Run Composer
   - composer install
 
+merge_conflict_checker:
+  stage: lint
+  image: umutphp/php-docker-images-for-ci:7.0
+  script:
+    - merge_conflict_checker .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+gitignore_checker:
+  stage: lint
+  image: umutphp/php-docker-images-for-ci:7.0
+  allow_failure: true
+  script:
+    - gitignore_checker
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
 linter:7.0:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.0
@@ -238,7 +259,6 @@ phpdcd:7.3:
     - master
     - develop
     - /^feature.*$/
-
 
 composer-checker:
   stage: security
