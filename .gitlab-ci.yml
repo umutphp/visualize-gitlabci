@@ -4,9 +4,9 @@ stages:
   - security
   - test
 
-before_script:
+#before_script:
   # Run Composer
-  - composer install
+#  - composer install
 
 merge_conflict_checker:
   stage: lint
