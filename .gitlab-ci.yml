@@ -270,6 +270,16 @@ composer-checker:
     - develop
     - /^feature.*$/
 
+psecio-parse:
+  stage: security
+  image: umutphp/php-docker-images-for-ci:7.1
+  script:
+    - psecio-parse -vvv scan ./src/
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
 unittest:7.0:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.0

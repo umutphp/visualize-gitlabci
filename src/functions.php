@@ -36,7 +36,7 @@ function getListOfJobs($array, $reservedKeywords)
     return array_filter(
         $array,
         function ($v, $k) use ($reservedKeywords) {
-            return !in_array($k, $reservedKeywords) && is_array($v);
+            return !in_array($k, $reservedKeywords, true) && is_array($v);
         },
         ARRAY_FILTER_USE_BOTH
     );
