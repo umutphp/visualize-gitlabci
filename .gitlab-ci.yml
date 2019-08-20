@@ -282,8 +282,10 @@ psecio-parse:
 unittest:7.0:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.0
+  before_script:
+    - composer install
   script:
-    - phpunit
+    - ./vendor/bin/phpunit
   only:
     - master
     - develop
@@ -292,8 +294,10 @@ unittest:7.0:
 unittest:7.1:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.1
+  before_script:
+    - composer install
   script:
-    - phpunit
+    - ./vendor/bin/phpunit
   only:
     - master
     - develop
@@ -302,8 +306,10 @@ unittest:7.1:
 unittest:7.2:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.2
+  before_script:
+    - composer install
   script:
-    - phpunit
+    - ./vendor/bin/phpunit
   only:
     - master
     - develop
@@ -312,8 +318,10 @@ unittest:7.2:
 unittest:7.3:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.3
+  before_script:
+    - composer install
   script:
-    - ./phpunit
+    - ./vendor/bin/phpunit
   only:
     - master
     - develop
