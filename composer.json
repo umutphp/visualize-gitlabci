@@ -25,5 +25,7 @@
   "config": {
     "bin-dir": "vendor/bin/"
   },
-  "bin": ["visualize-gitlabci"]
+  "bin": [
+    "visualize-gitlabci"
+  ]
 }
