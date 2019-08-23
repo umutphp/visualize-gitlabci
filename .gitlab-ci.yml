@@ -5,6 +5,17 @@ stages:
   - test
   - build
 
+composer_normalize:
+  stage: lint
+  image: umutphp/php-docker-images-for-ci:7.2
+  script:
+    - composer normalize --dry-run
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+
 merge_conflict_checker:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.0
