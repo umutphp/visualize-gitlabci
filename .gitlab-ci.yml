@@ -297,7 +297,9 @@ unittest:7.1:
   before_script:
     - composer install
   script:
-    - ./vendor/bin/phpunit
+    #- ./vendor/bin/phpunit
+    - which phpunit
+    - ls -la
   only:
     - master
     - develop
