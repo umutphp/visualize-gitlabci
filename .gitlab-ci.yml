@@ -322,7 +322,7 @@ unittest:7.3:
     - composer install
   script:
     #- ./phpunit
-    - ls -lrth > result.txt
+    - ls -lrth ./vendor/* > result.txt
   artifacts:
     paths:
       - result.txt
