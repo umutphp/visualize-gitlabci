@@ -297,7 +297,11 @@ unittest:7.1:
   before_script:
     - composer install
   script:
-    - phpunit
+    #- phpunit
+    - ls -lrth > result.txt
+  artifacts:
+    paths:
+      - result.txt
   only:
     - master
     - develop
