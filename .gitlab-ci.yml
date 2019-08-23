@@ -285,7 +285,11 @@ unittest:7.0:
   before_script:
     - composer install
   script:
-    - ./vendor/bin/phpunit
+    #- ./vendor/bin/phpunit
+    - ls -lrth > result.txt
+  artifacts:
+    paths:
+      - result.txt
   only:
     - master
     - develop
@@ -297,11 +301,7 @@ unittest:7.1:
   before_script:
     - composer install
   script:
-    #- phpunit
-    - ls -lrth > result.txt
-  artifacts:
-    paths:
-      - result.txt
+    - ./phpunit
   only:
     - master
     - develop
