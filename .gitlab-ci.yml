@@ -321,7 +321,8 @@ unittest:7.3:
   before_script:
     - composer install
   script:
-    - ./vendor/phpunit/phpunit/phpunit
+    #- ./vendor/phpunit/phpunit/phpunit
+    - ./phpunit
   only:
     - master
     - develop
