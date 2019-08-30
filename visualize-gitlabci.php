@@ -37,18 +37,24 @@ if (!$autoloadFileFound) {
     die(FAILED);
 }
 
-/** array $defaultStages default stages of GitlabCI */
+/*
+ * Default stages of GitlabCI 
+ */
 $defaultStages = array(
     "build", "test", "deploy"
 );
 
-/** array $reservedKeywords Array of reserved keywords */
+/*
+ * Array of reserved keywords 
+ */
 $reservedKeywords = array(
     "image", "services", "stages", "types", "before_script",
     "after_script", "variables", "cache"
 );
 
-/** string $defaultTag Default tag name */
+/*
+ * Default tag name 
+ */
 $defaultTag = "master";
 
 /* YML file for GitlabCI */

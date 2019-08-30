@@ -194,11 +194,26 @@ function displayTableRuler($pipelineLength)
  * Get the length of the longest job name
  *
  * @param array $jobs Array of jobs with job names as keys
+ * 
  * @return int
  */
-function maxJobNameLength($jobs) {
+function maxJobNameLength($jobs)
+{
     $keys    = array_keys($jobs);
     $lengths = array_map('strlen', $keys);
 
     return max($lengths);
+}
+
+/**
+ * Get the length of the pipeline by using stages and column width
+ *
+ * @param array   $stages      Array of stages
+ * @param integer $columnWidth The width of a column
+ *
+ * @return integer
+ */
+function pipelineLength($stages, $columnWidth)
+{
+    return (count($stages) * $columnWidth) + count($stages) + 1;
 }
