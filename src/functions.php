@@ -90,7 +90,7 @@ function getBranchesUsed($jobs, $defaultTag = "master")
         return array($defaultTag);
     }
 
-    return array_unique($tags);
+    return array_values(array_unique($tags));
 }
 
 /**

@@ -37,4 +37,45 @@ class FunctionsTest extends TestCase
         
         $this->assertEquals($array["stages"], getStages($array, $defaultStages));
     }
+
+    function testGetBranchesUsed() {
+        $this->assertEquals(array("master"), getBranchesUsed(array()));
+
+        $jobs = array(
+            "job1" => array(
+                "only" => array("branch1")
+            )
+        );
+        $this->assertEquals(array("branch1"), getBranchesUsed($jobs));
+
+        $jobs = array(
+            "job1" => array(
+                "only" => array("branch1", "branch2")
+            ),
+            "job2" => array(
+                "only" => array("branch2", "branch3")
+            )
+        );
+        $this->assertEquals(array("branch1","branch2", "branch3"), getBranchesUsed($jobs));
+    }
+
+    function testGetListOfJobs() {
+        $config = array(
+            "job1" => array(
+                "only" => array("branch1")
+            )
+        );
+        $this->assertEquals(array(), getListOfJobs($config, array("job1")));
+        $this->assertEquals(array("job1"), array_keys(getListOfJobs($config, array("job2"))));
+
+        $config = array(
+            "job1" => array(
+                "only" => array("branch1")
+            ),
+            "job2" => array(
+                "only" => array("branch1")
+            )
+        );
+        $this->assertEquals(array("job1"), array_keys(getListOfJobs($config, array("job2"))));
+    }
 }
