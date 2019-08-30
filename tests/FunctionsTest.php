@@ -60,6 +60,8 @@ class FunctionsTest extends TestCase
     }
 
     function testGetListOfJobs() {
+        $this->assertEquals(array(), getListOfJobs(array(), array()));
+
         $config = array(
             "job1" => array(
                 "only" => array("branch1")
@@ -77,5 +79,23 @@ class FunctionsTest extends TestCase
             )
         );
         $this->assertEquals(array("job1"), array_keys(getListOfJobs($config, array("job2"))));
+    }
+
+    function testGetDisplayData() {
+        $jobs = array(
+            "job1" => array(
+                "stage" => "stage1",
+                "only"  => array("branch1", "branch2")
+            ),
+            "job2" => array(
+                "stage" => "stage2",
+                "only" => array("branch2", "branch3")
+            )
+        );
+        $result = getDisplayData($jobs);
+        $this->assertEquals(3, count($result));
+        $this->assertEquals(array("stage1"), (array_keys($result["branch1"])));
+        $this->assertEquals(array("stage1", "stage2"), (array_keys($result["branch2"])));
+        $this->assertEquals(array("stage2"), (array_keys($result["branch3"])));
     }
 }
