@@ -292,6 +292,7 @@ unittest:7.0:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.0
   before_script:
+    - rm -rf composer.lock
     - composer install
   script:
     - ./phpunit
@@ -304,6 +305,7 @@ unittest:7.1:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.1
   before_script:
+    - rm -rf composer.lock
     - composer install
   script:
     - ./phpunit
@@ -316,6 +318,7 @@ unittest:7.2:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.2
   before_script:
+    - rm -rf composer.lock
     - composer install
   script:
     - ./phpunit
@@ -328,9 +331,9 @@ unittest:7.3:
   stage: test
   image: umutphp/php-docker-images-for-ci:7.3
   before_script:
+    - rm -rf composer.lock
     - composer install
   script:
-    #- ./vendor/phpunit/phpunit/phpunit
     - ./phpunit
   only:
     - master
@@ -341,6 +344,7 @@ buid:5.6:
   stage: build
   image: umutphp/php-docker-images-for-ci:5.6
   script:
+    - rm -rf composer.lock
     - composer install
   only:
     - master
@@ -351,6 +355,7 @@ buid:7.0:
   stage: build
   image: umutphp/php-docker-images-for-ci:7.0
   script:
+    - rm -rf composer.lock
     - composer install
   only:
     - master
@@ -361,6 +366,7 @@ build:7.1:
   stage: build
   image: umutphp/php-docker-images-for-ci:7.1
   script:
+    - rm -rf composer.lock
     - composer install
   only:
     - master
@@ -371,6 +377,7 @@ build:7.2:
   stage: build
   image: umutphp/php-docker-images-for-ci:7.2
   script:
+    - rm -rf composer.lock
     - composer install
   only:
     - master
@@ -381,6 +388,7 @@ build:7.3:
   stage: build
   image: umutphp/php-docker-images-for-ci:7.3
   script:
+    - rm -rf composer.lock
     - composer install
   only:
     - master
