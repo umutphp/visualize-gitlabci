@@ -10,18 +10,6 @@
  * @license  http://opensource.org/licenses/gpl-3.0 GPLv3
  * @link     https://gitlab.com/umutphp/visualize-gitlabci
  */
-$defaultStages = array(
-    "build", "test", "deploy"
-);
-
-$reservedKeywords = array(
-    "image", "services", "stages", "types", "before_script",
-    "after_script", "variables", "cache"
-);
-
-$defaultTag = "master";
-
-$CIYML = ".gitlab-ci.yml";
 
 /**
  * Get the list of jobs from config array
@@ -200,4 +188,17 @@ function displayTagHeader($columnWidth, $pipelineLength, $tag)
 function displayTableRuler($pipelineLength)
 {
     echo str_repeat("-", $pipelineLength) . PHP_EOL;
+}
+
+/**
+ * Get the length of the longest job name
+ *
+ * @param array $jobs Array of jobs with job names as keys
+ * @return int
+ */
+function maxJobNameLength($jobs) {
+    $keys    = array_keys($jobs);
+    $lengths = array_map('strlen', $keys);
+
+    return max($lengths);
 }

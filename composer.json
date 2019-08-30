@@ -27,5 +27,10 @@
   },
   "bin": [
     "visualize-gitlabci"
-  ]
+  ],
+  "autoload":  {
+    "files": [
+      "src/functions.php"
+    ]
+  }
 }

@@ -37,7 +37,22 @@ if (!$autoloadFileFound) {
     die(FAILED);
 }
 
-require_once __DIR__ . '/src/functions.php';
+/** array $defaultStages default stages of GitlabCI */
+$defaultStages = array(
+    "build", "test", "deploy"
+);
+
+/** array $reservedKeywords Array of reserved keywords */
+$reservedKeywords = array(
+    "image", "services", "stages", "types", "before_script",
+    "after_script", "variables", "cache"
+);
+
+/** string $defaultTag Default tag name */
+$defaultTag = "master";
+
+/* YML file for GitlabCI */
+$CIYML    = ".gitlab-ci.yml";
 
 $config   = Yaml::parseFile($CIYML);
 $jobs     = getListOfJobs($config, $reservedKeywords);
@@ -45,7 +60,8 @@ $stages   = getStages($config, $defaultStages);
 $branches = getBranchesUsed($config, $defaultTag);
 $data     = getDisplayData($jobs);
 
-$columnWidth    = 32;
+/* Column width should be 2 character longer than max job name */
+$columnWidth    = maxJobNameLength($jobs) + 2;
 $pipelineLength = (count($stages) * $columnWidth) + count($stages) + 1;
 
 //var_dump($data);
