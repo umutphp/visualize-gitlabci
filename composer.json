@@ -25,12 +25,12 @@
   "config": {
     "bin-dir": "vendor/bin/"
   },
-  "bin": [
-    "visualize-gitlabci"
-  ],
   "autoload":  {
     "files": [
       "src/functions.php"
     ]
-  }
+  },
+  "bin": [
+    "visualize-gitlabci"
+  ]
 }
