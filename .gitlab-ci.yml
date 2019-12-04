@@ -78,6 +78,16 @@ linter:7.3:
     - develop
     - /^feature.*$/
 
+linter:7.4:
+  stage: lint
+  image: umutphp/php-docker-images-for-ci:7.4
+  script:
+    - parallel-lint --exclude vendor .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
 phpcs:7.0:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.0
@@ -111,6 +121,16 @@ phpcs:7.2:
 phpcs:7.3:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.3
+  script:
+    - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+phpcs:7.4:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.4
   script:
     - phpcs --ignore=./vendor/,*/tests/*,*/data/* .
   only:
@@ -158,6 +178,16 @@ var-dump-check:7.3:
     - develop
     - /^feature.*$/
 
+var-dump-check:7.4:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.4
+  script:
+    - var-dump-check .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
 phpmnd:7.0:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.0
@@ -198,6 +228,16 @@ phpmnd:7.3:
     - develop
     - /^feature.*$/
 
+phpmnd:7.4:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.4
+  script:
+    - phpmnd .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
 phpcpd:7.1:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.1
@@ -221,6 +261,16 @@ phpcpd:7.2:
 phpcpd:7.3:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.3
+  script:
+    - phpcpd --exclude=vendor .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+phpcpd:7.4:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.4
   script:
     - phpcpd --exclude=vendor .
   only:
@@ -261,6 +311,16 @@ phpdcd:7.2:
 phpdcd:7.3:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.3
+  script:
+    - phpdcd -vvv --exclude vendor --exclude tests .
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+phpdcd:7.4:
+  stage: check
+  image: umutphp/php-docker-images-for-ci:7.4
   script:
     - phpdcd -vvv --exclude vendor --exclude tests .
   only:
@@ -340,6 +400,19 @@ unittest:7.3:
     - develop
     - /^feature.*$/
 
+unittest:7.4:
+  stage: test
+  image: umutphp/php-docker-images-for-ci:7.4
+  before_script:
+    - rm -rf composer.lock
+    - composer install
+  script:
+    - ./phpunit
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
 buid:5.6:
   stage: build
   image: umutphp/php-docker-images-for-ci:5.6
@@ -387,6 +460,17 @@ build:7.2:
 build:7.3:
   stage: build
   image: umutphp/php-docker-images-for-ci:7.3
+  script:
+    - rm -rf composer.lock
+    - composer install
+  only:
+    - master
+    - develop
+    - /^feature.*$/
+
+build:7.4:
+  stage: build
+  image: umutphp/php-docker-images-for-ci:7.4
   script:
     - rm -rf composer.lock
     - composer install
