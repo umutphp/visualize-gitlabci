@@ -5,6 +5,9 @@ stages:
   - test
   - build
 
+include:
+  - template: Dependency-Scanning.gitlab-ci.yml
+
 composer_normalize:
   stage: lint
   image: umutphp/php-docker-images-for-ci:7.2
