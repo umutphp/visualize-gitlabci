@@ -241,26 +241,6 @@ phpmnd:7.4:
     - develop
     - /^feature.*$/
 
-phpcpd:7.1:
-  stage: check
-  image: umutphp/php-docker-images-for-ci:7.1
-  script:
-    - phpcpd --exclude=vendor .
-  only:
-    - master
-    - develop
-    - /^feature.*$/
-
-phpcpd:7.2:
-  stage: check
-  image: umutphp/php-docker-images-for-ci:7.2
-  script:
-    - phpcpd --exclude=vendor .
-  only:
-    - master
-    - develop
-    - /^feature.*$/
-
 phpcpd:7.3:
   stage: check
   image: umutphp/php-docker-images-for-ci:7.3
